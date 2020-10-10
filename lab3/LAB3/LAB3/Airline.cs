@@ -6,10 +6,6 @@ namespace LAB3
 {
     public partial class Airline
     {
-        /*конструкторы должны обеспечивать проверку
-          корректности.Создать массив объектов. Вывести:
-          a) список рейсов для заданного пункта назначения;
-          b) список рейсов для заданного дня недели;*/
         private string destination;//пункт назначения
         private uint numb;//номер рейса
         static string type;//тип самолета
@@ -20,15 +16,17 @@ namespace LAB3
         static int NumbOfPlanes = 0;
 
         //конструкторы
-        public Airline(string des, int numb)//c параметрами
+        public Airline(string des, string d, uint n)//c параметрами
         {
+            destination = des;
+            days = d;
+            numb = n;
             planeID = GetHashCode();
             NumbOfPlanes++;
         }
-        public Airline(string t, string d, int numb = 1)//с параметром по умолчанию
+        public Airline(string t, uint numb = 1)//с параметром по умолчанию
         {
             time = t;
-            days = d;
             planeID = GetHashCode();
             NumbOfPlanes++;
         }
