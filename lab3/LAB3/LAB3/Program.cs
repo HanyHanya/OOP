@@ -6,16 +6,17 @@ namespace LAB3
     {
         static void Main(string[] args)
         {
+
             Airline Plane1 = new Airline("Москва", "Понедельник", 1);
             Airline Plane2 = new Airline("Берлин", "Вторник", 2);
             Airline Plane3 = new Airline("Париж", "Среда", 3);
+            Airline Plane4 = new Airline("Москва", "Понедельник", 1);
 
-            
             Airline[] PlaneArr = { Plane1 , Plane2, Plane3};
 
             Console.WriteLine("Тип созданного объекта: " + Plane1.GetType());
             Console.WriteLine("Cравнение объектов Plane1 и Plane2: " + Plane1.Equals(Plane2));
-            Console.WriteLine("Cравнение объектов Plane1 и Plane1: " + Plane1.Equals(Plane1));
+            Console.WriteLine("Cравнение объектов Plane1 и Plane4: " + Plane1.Equals(Plane4));
 
             bool flag = false;
             Console.WriteLine("Введите пункт назначения");
