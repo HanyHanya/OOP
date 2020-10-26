@@ -4,14 +4,15 @@ using System.Text;
 
 namespace lab4
 {
-    public class Stack<S>
+    public class Stack
     {
-        private S[] items;
+        private int[] items;
         private int count;//количество элементов в стеке
-        const int n = 10;//максимальное количество элементов
-        public Stack()
+        private int capacity;//максимальное количество элементов
+        public Stack(int initCap = 0)
         {
-            items = new S[n];
+            capacity = initCap;
+            items = new int[initCap];
         }
 
         public bool IsEmpty//пуст или нет
@@ -23,7 +24,7 @@ namespace lab4
             get { return count; }
         }
 
-        public void Push(S item)//добавление
+        public void Push(int item)//добавление
         {
             // увеличиваем стек
             /*if (count == items.Length)
@@ -31,21 +32,34 @@ namespace lab4
 
             items[count++] = item;
         }
-        public S Pop()//поп :)
+        public int Pop()//поп :)
         {
             // если стек пуст, выбрасываем исключение
             if (IsEmpty)
                 throw new InvalidOperationException("Стек пуст");
-            S item = items[--count];
+            int item = items[--count];
            
            /* if (count > 0 && count < items.Length - 10)
                 Resize(items.Length - 10);*/
 
             return item;
         }
-        public S Peek()//чтение верхнего элемента
+        public int Peek()//чтение верхнего элемента
         {
             return items[count - 1];
+        }
+
+        //перегрузка
+        public static Stack operator +(Stack stack, int item)
+        {
+            stack.Push(item);
+            return stack;
+        }
+
+        public static Stack operator --(Stack stack)
+        {
+            stack.Pop();
+            return stack;
         }
 
         /*private void Resize(int max)//изменение максимальной длины
