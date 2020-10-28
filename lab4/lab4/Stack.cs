@@ -39,9 +39,9 @@ namespace lab4
         }
         public void Show()
         {
-            for(int i=0; i < items.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if(items[i]!=0)
+                if (items[i] != 0)
                     Console.WriteLine(items[i]);
 
             }
@@ -85,14 +85,86 @@ namespace lab4
         }
 
         public static bool operator true(Stack stack)
-         {
+        {
             return stack.items[0] != 0;
-         }
+        }
 
         public static bool operator false(Stack stack)
         {
             return stack.items[0] == 0;
         }
 
+        ///////2
+        internal class Owner
+        {
+            private string Id { get; }
+            private string Name { get; }
+            private string Organisation { get; }
+
+            public Owner(string id, string name, string org)
+            {
+                Id = id;
+                Name = name;
+                Organisation = org;
+            }
+            public override string ToString()
+            {
+                return $"ID владельца - {Id},\nИмя владельца - {Name},\nОрганизация - {Organisation} ";
+            }
+        }
+
+        ///////////3
+        public class Date
+        {
+            private int Day { get; }
+            private int Month { get; }
+            private int Year { get; }
+
+            public Date()
+            {
+                DateTime date = DateTime.Now;
+                Day = date.Day;
+                Month = date.Month;
+                Year = date.Year;
+            }
+        }
+
+        //////////////////4
+        static class StaticOperation
+        {
+            public static int Sum(Stack stack)
+            {
+                int sum = 0;
+                foreach(int i in stack.items)
+                {
+                    sum = sum + stack.items[i];
+                }
+                return sum;
+            }
+            public static int Diff(Stack stack)
+            {
+                int dif = 0;
+                int min = 999, max = -999;
+                foreach (int i in stack.items)
+                {
+                    if (stack.items[i] < min)
+                        min = stack.items[i];
+                    else if (stack.items[i] > max)
+                        max = stack.items[i];
+                }
+                dif = max - min;
+                return dif;
+            }
+            public static int NumOfEl(Stack stack)
+            {
+                int num = 0;
+                foreach (int i in stack.items)
+                {
+                    if (stack.items[i] != 0)
+                        num++;
+                }
+                return num;
+            }
+        }
     }
 }
