@@ -21,6 +21,9 @@ namespace lab4
             Console.WriteLine();
             numbers1 = numbers1 > numbers2;
             numbers1.Show();
+
+            Stack.Owner iAm = new Stack.Owner( "18", "Яна", "БГТУ" );
+            iAm.ToString();
         }
     }
 }

@@ -129,7 +129,7 @@ namespace lab4
             }
         }
 
-        //////////////////4
+        //////////////////4 5 
         static class StaticOperation
         {
             public static int Sum(Stack stack)
@@ -164,6 +164,22 @@ namespace lab4
                         num++;
                 }
                 return num;
+            }
+            public static int NumOfSentences(string str)
+            {
+                int num=0;
+                char[] let = str.ToCharArray();
+                foreach (char i in let)
+                    if (i == '.')
+                        num++;
+                return num;
+            }
+            public static int Middle(Stack stack)
+            {
+                int mid=0, position;
+                position = (stack.items.Length / 2);
+                mid = stack.items[position];
+                return mid;
             }
         }
     }
