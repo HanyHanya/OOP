@@ -7,21 +7,20 @@ namespace lab4
     {
         static void Main(string[] args)
         {
-            Stack numbers = new Stack(10);
-            numbers.Push(1);
-            numbers.Push(2);
-            numbers.Push(3);
-            numbers.Push(4);
-            numbers.Push(5);
-            numbers.Push(6);
-            numbers--;
-            numbers = numbers+7;
-            
-            while (!numbers.IsEmpty)
-            {
-                int numb = numbers.Pop();
-                Console.WriteLine(numb);
-            }
+            Stack numbers1 = new Stack(10);
+            Stack numbers2 = new Stack(10);
+            numbers1.Push(1);
+            numbers1.Push(2);
+            numbers1.Push(3);
+            numbers2.Push(4);
+            numbers2.Push(5);
+            numbers2.Push(6);
+            numbers1--;
+            numbers1 = numbers1+7;
+            numbers1.Show();
+            Console.WriteLine();
+            numbers1 = numbers1 > numbers2;
+            numbers1.Show();
         }
     }
 }

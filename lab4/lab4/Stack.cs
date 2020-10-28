@@ -26,10 +26,6 @@ namespace lab4
 
         public void Push(int item)//добавление
         {
-            // увеличиваем стек
-            /*if (count == items.Length)
-                Resize(items.Length + 10);*/
-
             items[count++] = item;
         }
         public int Pop()//поп :)
@@ -38,11 +34,17 @@ namespace lab4
             if (IsEmpty)
                 throw new InvalidOperationException("Стек пуст");
             int item = items[--count];
-           
-           /* if (count > 0 && count < items.Length - 10)
-                Resize(items.Length - 10);*/
 
             return item;
+        }
+        public void Show()
+        {
+            for(int i=0; i < items.Length; i++)
+            {
+                if(items[i]!=0)
+                    Console.WriteLine(items[i]);
+
+            }
         }
         public int Peek()//чтение верхнего элемента
         {
@@ -62,14 +64,35 @@ namespace lab4
             return stack;
         }
 
-        /*private void Resize(int max)//изменение максимальной длины
+        public static Stack operator >(Stack stack1, Stack stack2)
         {
-            S[] tempItems = new S[max];
-            for (int i = 0; i < count; i++)
-                tempItems[i] = items[i];
-            items = tempItems;
-        }*/
 
+            int i = stack1.items.Length;
+            Array.Resize<int>(ref stack1.items, stack1.items.Length + stack2.items.Length);
+            Array.Copy(stack2.items, 0, stack1.items, i, stack2.items.Length);
+            Array.Sort(stack1.items);
+            return stack1;
+        }
+        public static Stack operator <(Stack stack1, Stack stack2)
+        {
+
+            int i = stack1.items.Length;
+            Array.Resize<int>(ref stack1.items, stack1.items.Length + stack2.items.Length);
+            Array.Copy(stack2.items, 0, stack1.items, i, stack2.items.Length);
+            Array.Sort(stack1.items);
+            Array.Reverse(stack1.items);
+            return stack1;
+        }
+
+        public static bool operator true(Stack stack)
+         {
+            return stack.items[0] != 0;
+         }
+
+        public static bool operator false(Stack stack)
+        {
+            return stack.items[0] == 0;
+        }
 
     }
 }
