@@ -18,7 +18,7 @@ namespace LAB5
             Island island2 = land1 as Island;
             Console.WriteLine("Land to Island conversion is {0} completed", (island2 != null) ? "" : "not");
             Land land2 = con1 as Land;
-            Console.WriteLine("Tiger to mammals conversion is {0} completed", (land2 != null) ? "" : "not");
+            Console.WriteLine("Continent to Land conversion is {0} completed", (land2 != null) ? "" : "not");
             Console.WriteLine();
 
             Print print1 = new Print();
