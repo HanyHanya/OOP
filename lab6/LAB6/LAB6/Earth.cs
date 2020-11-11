@@ -12,10 +12,7 @@ namespace LAB6
         {
             Console.WriteLine("On Earth");
         }
-        public override string ToString()
-        {
-            return @$"У меня нет столько фантазии, чтобы придумывать методы и поля для ВОДЫ(и не только)";
-        }
+        
     }
     public interface OnEarth
     {
@@ -41,14 +38,15 @@ namespace LAB6
 
     public class State : Continent
     {
-        public State(string _name)
+        public State(string _name) : base(_name)
         {
             name = _name;
         }
     }
     public sealed class Island : Land, OnEarth
     {
-        public Island(string name) { }
+        public Island(string _name) { name = _name; }
+    
         public override void What()
         {
             Console.WriteLine("It is land");
@@ -58,7 +56,7 @@ namespace LAB6
     public class Sea : Water, OnEarth
     {
         public Sea() { }
-        public Sea(string name) { }
+        public Sea(string _name) { name = _name; }
         public override void What()
         {
             Console.WriteLine("It is water");

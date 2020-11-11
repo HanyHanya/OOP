@@ -31,28 +31,41 @@ namespace LAB6
         {
             foreach (Earth elem in earth)
             {
-                Console.WriteLine(elem);
+                Console.WriteLine(elem.name);
             }
         }
     }
 
-    public class EarthController : Earth
+    public class EarthController 
     {
-        List<Earth> earth = new List<Earth>();
-        public void SortIsland()
+        //List<Earth> earth = new List<Earth>();
+        public void SortIsland(List<Earth> newlist)
         {
             int n = 0, i = 0;
-            foreach (Island elem in earth)
+            foreach (Earth elem in newlist)
             {
-                n++;
+                if (elem is Island)
+                {
+                    n++;
+                }
             }
+            
             string[] IslandArr = new string[n];
-            foreach (Island elem in earth)
+            foreach (Earth elem in newlist)
             {
-                IslandArr[i] = elem.name;
-                i++;
+                if (elem is Island)
+                {
+                    IslandArr[i] = elem.name;
+                    i++;
+                }
+            }
+            Console.WriteLine("Не Сортировавнные Острова");
+            foreach (string elem in IslandArr)
+            {
+                Console.WriteLine(elem);
             }
             Array.Sort(IslandArr);
+            Console.WriteLine("Отсортировавнные Острова");
             foreach (string elem in IslandArr)
             {
                 Console.WriteLine(elem);
@@ -60,40 +73,18 @@ namespace LAB6
             Console.WriteLine();
         }
 
-        public int NumOfSeas()
+        public int NumOfSeas(List<Earth> newlist)
         {
             int n = 0;
-            foreach (Sea elem in earth)
+            foreach (Earth elem in newlist)
             {
-                n++;
+                if (elem is Island)
+                {
+                    n++;
+                }
             }
             return n;
         }
 
-        static public List<Earth> ReadFile(string path)
-        {
-            List<Earth> earthObj = new List<Earth>();
-
-            try
-            {
-                using (StreamReader reader = new StreamReader(path))
-                {
-                    string[] fileString;
-                    while (!reader.EndOfStream)
-                    {
-                        fileString = reader.ReadLine().Split(" ");
-                        Earth elem = new Earth(Convert.ToString(fileString[0]));
-                        earthObj.Add(elem);
-                    }
-
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return earthObj;
-        }
     }
 }

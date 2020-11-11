@@ -20,18 +20,18 @@ namespace LAB6
             Sea sea5 = new Sea();
             Ocean ocean1 = new Ocean();
             Continent con1 = new Continent("OneC");
-            State state1 = new State("OneS"); 
-            State state2 = new State("TwoS");
-           
+            State state1 = new State("OneState");
+            State state2 = new State("TwoState");
+
             earth.Add(sea1);
             earth.Add(sea2);
             earth.Add(sea3);
             earth.Add(sea4);
             earth.Add(sea5);
 
+            earth.Add(island3);
             earth.Add(island1);
             earth.Add(island2);
-            earth.Add(island3);
 
             earth.Add(con1);
             con1.Add(state1);
@@ -39,26 +39,10 @@ namespace LAB6
 
             Console.WriteLine("Государства:");
             con1.ShowList();
-            Console.WriteLine("Отсортировавнные Острова");
-            contr.SortIsland();
-            Console.WriteLine("Колисество морей на Земле: " + contr.NumOfSeas());
+            Console.WriteLine();
+            contr.SortIsland(earth.EarthL);
+            Console.WriteLine("Количество морей на Земле: " + contr.NumOfSeas(earth.EarthL));
 
-            Console.WriteLine("Дополнительное задание 1");
-            string path = "C:\\Users\\Яна\\Desktop\\lab\\sem3\\OOP\\labs\\lab6\\LAB6\\Earth.txt";
-            List<Earth> collection = EarthController.ReadFile(path);
-            foreach (Earth i in collection)
-            {
-                Console.WriteLine(i);
-            }
-
-            /*Console.WriteLine("Read from JSON \n");
-            string path1 = "";
-            using (StreamReader sr = new StreamReader(path1))
-            {
-                string file = sr.ReadToEnd();
-                //Mammals animal2 = JsonConvert.DeserializeObject<Mammals>(file);
-                Console.WriteLine(animal2);
-            }*/
         }
 
     }
